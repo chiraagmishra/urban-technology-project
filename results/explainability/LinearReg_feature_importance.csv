@@ -1,0 +1,9 @@
+Rank,Feature,SHAP_Importance,Importance_Pct,Model
+1,migration_foreign_lag3,30197.1894,57.0,LinearReg
+2,vacancies_sc_lag0,12654.6988,23.9,LinearReg
+3,migration_foreign_lag2,3477.5542,6.6,LinearReg
+4,vacancy_rate_lag0,3165.1777,6.0,LinearReg
+5,unemployed_count_lag0,1580.8203,3.0,LinearReg
+6,unemployment_rate_lag0,1049.3561,2.0,LinearReg
+7,migration_foreign_lag1,896.9086,1.7,LinearReg
+8,labor_market_tightness_lag0,0.0032,0.0,LinearReg
