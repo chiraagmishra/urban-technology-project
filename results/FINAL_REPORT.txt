@@ -1,0 +1,159 @@
+================================================================================
+FINAL RESEARCH REPORT
+Migration and Labor Market Dynamics in Germany (2000-2024)
+================================================================================
+
+Analysis Date: 2026-01-14 00:24:56
+Dataset: 16 German states, 2000-2024
+Total Observations: 400
+Test Period: 2020-2024
+
+================================================================================
+RESEARCH QUESTIONS
+================================================================================
+
+1. Do job vacancies predict foreign migration patterns?
+2. Does labor market tightness predict foreign migration patterns?
+3. Can labor market indicators improve migration forecasts?
+
+================================================================================
+METHODOLOGY
+================================================================================
+
+Data Analysis Approach:
+   • Correlation analysis (Pearson) for H1 and H2
+   • Global forecasting models trained on 16 states simultaneously
+   • Baseline models: Naive, AutoARIMA (no covariates)
+   • Global models: LinearReg, RandomForest, XGBoost, LightGBM (with covariates)
+   • SHAP explainability for feature importance
+   • Statistical significance testing (α = 0.05)
+
+Key Variables:
+   Target: migration_foreign (foreign migration balance)
+   Covariates:
+     • unemployment_rate
+     • vacancies_sc (job vacancies subject to social contributions)
+     • labor_market_tightness (vacancies/unemployed)
+     • unemployed_count
+     • vacancy_rate
+
+================================================================================
+KEY FINDINGS
+================================================================================
+
+--------------------------------------------------------------------------------
+HYPOTHESIS 1: Job Vacancies → Foreign Migration
+--------------------------------------------------------------------------------
+STRONGLY SUPPORTED
+
+Evidence:
+   • Mean correlation: r = 0.640
+   • Positive correlation in 16/16 states (100.0%)
+   • Significant positive in 15/16 states
+   • Statistical test: t = 18.422, p = 1.0344758080389701e-11
+   • Effect size: Cohen's d = 4.605 (LARGE)
+
+--------------------------------------------------------------------------------
+HYPOTHESIS 2: Labor Market Tightness → Foreign Migration
+--------------------------------------------------------------------------------
+STRONGLY SUPPORTED
+
+Evidence:
+   • Mean correlation: r = 0.639
+   • Positive correlation in 16/16 states (100.0%)
+   • Significant positive in 15/16 states
+   • Statistical test: t = 19.384, p = 4.96364592987353e-12
+   • Effect size: Cohen's d = 4.846 (LARGE)
+
+--------------------------------------------------------------------------------
+HYPOTHESIS 3: Labor Market Variables Improve Prediction Accuracy
+--------------------------------------------------------------------------------
+STRONGLY SUPPORTED
+
+Model Performance:
+   • Baseline (no covariates):    RMSE = 34464.39
+   • Global models (with covariates): RMSE = 25800.06
+   • Mean improvement: 25.3%
+   • States improved: 16/16 (100.0%)
+   • Statistical test: t = 3.915, p = 0.0006887338099260772
+   • Effect size: Cohen's d = 0.979 (LARGE)
+
+--------------------------------------------------------------------------------
+SUPPORTING EVIDENCE: Feature Importance (SHAP Analysis)
+--------------------------------------------------------------------------------
+
+Key Features for Best Model:
+
+   Model: LinearReg
+   Top 5 Features:
+      1. vacancies_sc_lag0                         25.2%
+      2. vacancies_sc_lag-1                        20.7%
+      3. migration_foreign_lag3                    12.9%
+      4. unemployed_count_lag-1                    12.3%
+      5. unemployed_count_lag0                     11.1%
+
+   Category Breakdown:
+      Labor Market Variables:  85.3%
+      Past Migration Patterns: 14.7%
+
+================================================================================
+OVERALL CONCLUSIONS
+================================================================================
+
+Summary: 3/3 hypotheses strongly supported
+
+RESEARCH OBJECTIVES ACHIEVED
+
+This study provides strong, triangulated evidence that labor market
+indicators significantly predict and improve forecasts of foreign migration
+patterns across all 16 German states.
+
+Three Lines of Evidence:
+   1. Correlation Analysis: Both job vacancies (r=0.640) and
+      labor market tightness (r=0.639) strongly correlate
+      with migration (both p<0.001)
+
+   2. Predictive Power: Models using labor market variables are
+      25.3% more accurate than baseline models
+      (p=0.000689)
+
+   3. Feature Importance: SHAP analysis confirms labor market
+      variables are among the top predictive features
+
+================================================================================
+LIMITATIONS
+================================================================================
+
+Study Limitations:
+   • Limited to 25 years of data (2000-2024)
+   • Yearly aggregation misses within-year dynamics
+   • Omitted variables:
+     - Housing costs and availability
+     - Education quality and university rankings
+     - Cultural amenities and quality of life
+     - Social networks and diaspora effects
+     - Immigration policy changes
+   • Correlation does not prove causation
+   • Model performance varies by state (heterogeneity)
+
+================================================================================
+FUTURE RESEARCH DIRECTIONS
+================================================================================
+
+Recommended Extensions:
+   1. Include additional covariates:
+      • Housing market indicators
+      • GDP growth and regional economic indicators
+      • Education and amenity indices
+      • Cultural diversity measures
+
+   2. Test causality:
+      • Granger causality tests
+      • Instrumental variable analysis
+      • Difference-in-differences (policy changes)
+
+   3. Extend analysis:
+      • Analyze specific nationality groups separately
+      • Use monthly/quarterly data for higher resolution
+      • Compare with other European countries
+      • Investigate regional spillover effects
